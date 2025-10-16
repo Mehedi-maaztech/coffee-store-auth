@@ -7,6 +7,8 @@ import HomeLayouts from '../layouts/HomeLayouts';
 import AuthLayout from '../layouts/AuthLayout';
 import Register from '../component/Register';
 import Login from '../component/Login';
+import Users from '../Users/Users';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
     // {
@@ -39,16 +41,16 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addCoffee',
-                element: <AddCoffee></AddCoffee>
+                element: <PrivateRoute><AddCoffee></AddCoffee></PrivateRoute>
             },
             {
                 path: '/updateCoffee/:id',
-                element: <UpdateCoffee></UpdateCoffee>,
+                element: <PrivateRoute><UpdateCoffee></UpdateCoffee></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`)
             },
             {
                 path: '/coffeeDetails/:id',
-                element: <CoffeeDetails></CoffeeDetails>,
+                element: <PrivateRoute><CoffeeDetails></CoffeeDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`)
             },
         ]
@@ -66,6 +68,11 @@ const router = createBrowserRouter([
                 element: <Register></Register>
             }
         ]
+    },
+    {
+        path: '/users',
+        element: <Users></Users>,
+        loader: () => fetch('http://localhost:5000/users')
     }
 
 ])

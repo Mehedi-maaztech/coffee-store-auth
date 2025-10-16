@@ -1,12 +1,28 @@
 import logo from '../assets/more/logo1.png';
 import headbg from '../assets/more/15.jpg';
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
 const Header = () => {
+  
+  const {user, logout} = useContext(AuthContext);
+
+  // const handleLogout = () => {
+  //   logout()
+  // }
   const link = <>
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/addCoffee'>Add Coffee</NavLink></li>
     {/* <li><NavLink to='/updateCoffee'>About</NavLink></li> */}
-    <li><NavLink to='/auth/login'>Login</NavLink></li>
+    {user && <li><NavLink></NavLink></li>}
+    {
+      user ? 
+      <button onClick={logout}>Log Out</button> 
+      :
+      <li>
+        <NavLink to='/auth/login'>Login</NavLink>
+      </li>
+    }
   </>
   return (
     <header

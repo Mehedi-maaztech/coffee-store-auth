@@ -1,10 +1,48 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
+    const { loginUser,user, setUser } = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleLogin = e => {
         e.preventDefault();
-        
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const user = { email, password }
+        console.log(user);
+
+        loginUser(email, password)
+            .then(res => {
+                
+                console.log("User logged in", user);
+                
+                const lastSignInTime = res.user.metadata.lastSignInTime;
+                const loginInfo = {email, lastSignInTime}
+
+                fetch('http://localhost:5000/users', {
+                    method: "PATCH",
+                    headers: {
+                        'content-type' : 'application/json'
+                    },
+                    body: JSON.stringify(loginInfo)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log('sign in info updated in db',data)
+                })
+                const newUser = res.user
+                setUser(newUser);
+                form.reset();
+                navigate('/');
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
     }
+
+    console.log(user);
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col w-full max-w-md">

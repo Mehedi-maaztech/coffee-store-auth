@@ -5,7 +5,7 @@ import { AuthContext } from "../provider/AuthProvider";
 const Register = () => {
 
     const { createUser, updateUserProfile } = useContext(AuthContext);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
@@ -18,7 +18,9 @@ const Register = () => {
         createUser(email, password)
             .then(res => {
                 console.log(res.user);
-                const newUser = { name, email }
+                const createdAT = res?.user?.metadata?.creationTime;
+                const fireid = res.user.uid;
+                const newUser = { name, email, fireid, createdAT }
             
                 // save new user info into db 
                 fetch(`http://localhost:5000/users`, {
@@ -38,8 +40,8 @@ const Register = () => {
                 })
                     .then(() => { })
                     .catch(error => console.log(error));
-                // form.reset();
-                // navigate('/auth/login');
+                form.reset();
+                navigate('/auth/login');
             })
             .catch(err => {
                 console.log(err.message)
