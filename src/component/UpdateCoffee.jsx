@@ -19,7 +19,7 @@ const AddCoffeeForm = () => {
         const details = form.details.value;
         const photourl = form.photourl.value;
         const updatedCoffee = { name, chef, supplier, taste, category, details, photourl }
-        console.log(updatedCoffee);
+        // console.log(updatedCoffee);
 
         fetch(`http://localhost:5000/coffee/${_id}`, {
             method: 'PUT',
@@ -30,7 +30,7 @@ const AddCoffeeForm = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         icon: "success",

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import axios from "axios";
 
 const Register = () => {
 
@@ -12,28 +13,33 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { name, email, password }
-        console.log(user);
+        // const user = { name, email, password }
+        // console.log(user);
 
         createUser(email, password)
             .then(res => {
-                console.log(res.user);
+                // console.log(res.user);
                 const createdAT = res?.user?.metadata?.creationTime;
                 const fireid = res.user.uid;
                 const newUser = { name, email, fireid, createdAT }
-            
-                // save new user info into db 
-                fetch(`http://localhost:5000/users`, {
-                    method: "POST",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(newUser)
+                
+                // axios fetch to save new user info into db
+                axios.post('http://localhost:5000/users', newUser)
+                .then(data => {
+                    console.log(data.data)
                 })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log("user created ", data)
-                    })
+                // save new user info into db 
+                // fetch(`http://localhost:5000/users`, {
+                //     method: "POST",
+                //     headers: {
+                //         'content-type': 'application/json'
+                //     },
+                //     body: JSON.stringify(newUser)
+                // })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         console.log("user created ", data)
+                //     })
 
                 updateUserProfile({
                     displayName: name

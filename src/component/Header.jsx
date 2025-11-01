@@ -13,8 +13,7 @@ const Header = () => {
   const link = <>
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/addCoffee'>Add Coffee</NavLink></li>
-    {/* <li><NavLink to='/updateCoffee'>About</NavLink></li> */}
-    {user && <li><NavLink></NavLink></li>}
+    <li><NavLink to='/users'>Users</NavLink></li>
     {
       user ? 
       <button onClick={logout}>Log Out</button> 
@@ -40,6 +39,11 @@ const Header = () => {
           <span className="text-2xl md:text-3xl font-bold">
             Espresso Emporium
           </span>
+          <div>
+            {
+              user && <p>{user.email}</p>
+            }
+          </div>
         </div>
 
         {/* Right - Menu for large screens */}

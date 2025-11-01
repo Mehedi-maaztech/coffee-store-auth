@@ -9,27 +9,9 @@ import Register from '../component/Register';
 import Login from '../component/Login';
 import Users from '../Users/Users';
 import PrivateRoute from './PrivateRoute';
+import Users2 from '../Users/Users2';
 
 const router = createBrowserRouter([
-    // {
-    //     path: '/',
-    //     element: <Homepage></Homepage>,
-    //     loader : () => fetch('http://localhost:5000/coffee')
-    // },
-    // {
-    //     path: '/addCoffee',
-    //     element: <AddCoffee></AddCoffee>
-    // },
-    // {
-    //     path: '/updateCoffee/:id',
-    //     element: <UpdateCoffee></UpdateCoffee>,
-    //     loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`)
-    // },
-    // {
-    //     path: '/coffeeDetails/:id',
-    //     element: <CoffeeDetails></CoffeeDetails>,
-    //     loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`)
-    // },
     {
         path: '/',
         element: <HomeLayouts></HomeLayouts>,
@@ -38,6 +20,7 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <Homepage></Homepage>,
                 loader: () => fetch('http://localhost:5000/coffee')
+                // loader: () => fetch('https://coffe-store-server-dusky-one.vercel.app/coffee')
             },
             {
                 path: '/addCoffee',
@@ -47,11 +30,13 @@ const router = createBrowserRouter([
                 path: '/updateCoffee/:id',
                 element: <PrivateRoute><UpdateCoffee></UpdateCoffee></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`)
+                // loader: ({ params }) => fetch(`https://coffe-store-server-dusky-one.vercel.app/coffee/${params.id}`)
             },
             {
                 path: '/coffeeDetails/:id',
                 element: <PrivateRoute><CoffeeDetails></CoffeeDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`)
+                // loader: ({ params }) => fetch(`https://coffe-store-server-dusky-one.vercel.app/coffee/${params.id}`)
             },
         ]
     },
@@ -73,6 +58,13 @@ const router = createBrowserRouter([
         path: '/users',
         element: <Users></Users>,
         loader: () => fetch('http://localhost:5000/users')
+        // loader: () => fetch('https://coffe-store-server-dusky-one.vercel.app/users')
+    },
+    {
+        path: '/users2',
+        element: <Users2></Users2>
+        // loader: () => fetch('http://localhost:5000/users')
+        // loader: () => fetch('https://coffe-store-server-dusky-one.vercel.app/users')
     }
 
 ])

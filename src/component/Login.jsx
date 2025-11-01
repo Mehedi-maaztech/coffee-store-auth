@@ -1,37 +1,43 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import axios from "axios";
 
 const Login = () => {
-    const { loginUser,user, setUser } = useContext(AuthContext);
+    const { loginUser, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { email, password }
-        console.log(user);
+        // const user = { email, password }
+        // console.log(user);
 
         loginUser(email, password)
             .then(res => {
                 
-                console.log("User logged in", user);
+                // console.log("User logged in", user);
                 
                 const lastSignInTime = res.user.metadata.lastSignInTime;
                 const loginInfo = {email, lastSignInTime}
 
-                fetch('http://localhost:5000/users', {
-                    method: "PATCH",
-                    headers: {
-                        'content-type' : 'application/json'
-                    },
-                    body: JSON.stringify(loginInfo)
-                })
-                .then(res => res.json())
+                // axios fetch to update login time
+                axios.patch('http://localhost:5000/users', loginInfo)
                 .then(data => {
-                    console.log('sign in info updated in db',data)
+                    console.log(data.data)
                 })
+                // fetch('http://localhost:5000/users', {
+                //     method: "PATCH",
+                //     headers: {
+                //         'content-type' : 'application/json'
+                //     },
+                //     body: JSON.stringify(loginInfo)
+                // })
+                // .then(res => res.json())
+                // .then(data => {
+                //     console.log('sign in info updated in db',data)
+                // })
                 const newUser = res.user
                 setUser(newUser);
                 form.reset();
@@ -42,7 +48,7 @@ const Login = () => {
             })
     }
 
-    console.log(user);
+    // console.log(user);
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col w-full max-w-md">

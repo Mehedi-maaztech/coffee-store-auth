@@ -10,7 +10,7 @@ const Users = () => {
     const { terminateUser } = useContext(AuthContext);
     const loadedUsers = useLoaderData();
     const [users, setUsers] = useState(loadedUsers);
-    console.log(users)
+    // console.log(users)
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -27,7 +27,7 @@ const Users = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         if (data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",
@@ -37,7 +37,7 @@ const Users = () => {
 
                             terminateUser(users.fireid)
                                 .then(() => {
-                                    console.log('deleted from firebase also');
+                                    // console.log('deleted from firebase also');
                                 })
                             const remaining = users.filter(user => user._id !== id)
                             setUsers(remaining);

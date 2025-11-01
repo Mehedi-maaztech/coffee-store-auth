@@ -13,7 +13,7 @@ const Homepage = () => {
     //console.log(coffee);
 
     const handleDelete = _id => {
-        console.log(_id);
+        // console.log(_id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -30,7 +30,7 @@ const Homepage = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (data.deletedCount > 0) {
-                            console.log("deleted")
+                            // console.log("deleted")
                             const newCoffee = loadedCoffee.filter(c => c._id !== _id)
                             setLoadedCoffee(newCoffee);
                             Swal.fire({
