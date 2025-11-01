@@ -72,6 +72,5 @@ This project is made on personla intrest
 ## 👨‍💻 Author
 
 **Mehedi Hasan**
-🌐 [Portfolio / Website](https://sprightly-coffee-store.netlify.app/)
-💌 Feel free to contribute or open issues to improve the project.
+🌐 [Portfolio / Website](https://mehedi-self-72.vercel.app/)
 
