@@ -24,7 +24,7 @@ const Homepage = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/coffee/${_id}`, {
+                fetch(`https://coffee-store-server-d5z5.onrender.com/coffee/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

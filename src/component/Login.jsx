@@ -23,11 +23,11 @@ const Login = () => {
                 const loginInfo = {email, lastSignInTime}
 
                 // axios fetch to update login time
-                axios.patch('http://localhost:5000/users', loginInfo)
+                axios.patch('https://coffee-store-server-d5z5.onrender.com/users', loginInfo)
                 .then(data => {
                     console.log(data.data)
                 })
-                // fetch('http://localhost:5000/users', {
+                // fetch('https://coffee-store-server-d5z5.onrender.com/users', {
                 //     method: "PATCH",
                 //     headers: {
                 //         'content-type' : 'application/json'

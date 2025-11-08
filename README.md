@@ -4,7 +4,7 @@
 **Sprightly Coffee Store** is a modern and responsive coffee e-commerce web application built to provide users with a seamless online coffee shopping experience.  
 The platform allows customers to browse premium coffee products, view details, and manage their shopping cart — all in a sleek, intuitive interface.
 
-🌐 **Live Demo:** [sprightly-coffee-store.netlify.app](https://sprightly-coffee-store.netlify.app/)
+🌐 **Live Demo:** [sprightly-coffee-store.netlify.app](https://coffee-store-server-d5z5.onrender.com/)
 
 ---
 

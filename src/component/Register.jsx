@@ -24,12 +24,12 @@ const Register = () => {
                 const newUser = { name, email, fireid, createdAT }
                 
                 // axios fetch to save new user info into db
-                axios.post('http://localhost:5000/users', newUser)
+                axios.post('https://coffee-store-server-d5z5.onrender.com/users', newUser)
                 .then(data => {
                     console.log(data.data)
                 })
                 // save new user info into db 
-                // fetch(`http://localhost:5000/users`, {
+                // fetch(`https://coffee-store-server-d5z5.onrender.com/users`, {
                 //     method: "POST",
                 //     headers: {
                 //         'content-type': 'application/json'
