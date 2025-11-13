@@ -19,7 +19,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Homepage></Homepage>,
-                loader: () => fetch('https://coffee-store-server-d5z5.onrender.com/coffee')
+                loader: () => fetch('https://coffee-store-server-x9i2.onrender.com/coffee')
             },
             {
                 path: '/addCoffee',
@@ -28,12 +28,12 @@ const router = createBrowserRouter([
             {
                 path: '/updateCoffee/:id',
                 element: <PrivateRoute><UpdateCoffee></UpdateCoffee></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://coffee-store-server-d5z5.onrender.com/coffee/${params.id}`)
+                loader: ({ params }) => fetch(`https://coffee-store-server-x9i2.onrender.com/coffee/${params.id}`)
             },
             {
                 path: '/coffeeDetails/:id',
                 element: <PrivateRoute><CoffeeDetails></CoffeeDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://coffee-store-server-d5z5.onrender.com/coffee/${params.id}`)
+                loader: ({ params }) => fetch(`https://coffee-store-server-x9i2.onrender.com/coffee/${params.id}`)
             },
         ]
     },
@@ -53,8 +53,8 @@ const router = createBrowserRouter([
     },
     {
         path: '/users',
-        element: <Users></Users>,
-        loader: () => fetch('https://coffee-store-server-d5z5.onrender.com/users')
+        element: <PrivateRoute><Users></Users></PrivateRoute>,
+        loader: () => fetch('https://coffee-store-server-x9i2.onrender.com/users')
     },
     {
         path: '/users2',

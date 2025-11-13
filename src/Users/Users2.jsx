@@ -13,13 +13,13 @@ const Users2 = () => {
     const { data: users, isPending, isError, error} = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await axios.get('https://coffee-store-server-d5z5.onrender.com/users');
+            const res = await axios.get('https://coffee-store-server-x9i2.onrender.com/users');
             return res.data;
         }
     })
     // const [users, setUsers] = useState([]);
     // useEffect(() => { 
-    //     fetch('https://coffee-store-server-d5z5.onrender.com/users')
+    //     fetch('https://coffee-store-server-x9i2.onrender.com/users')
     //         .then(res => res.json())
     //         .then(data => setUsers(data))
     //  }, []);

@@ -19,7 +19,7 @@ const AddCoffeeForm = () => {
         const newCoffee = { name, chef, supplier, taste, category, details, photourl }
         // console.log(newCoffee);
 
-        fetch('https://coffee-store-server-d5z5.onrender.com/coffee', {
+        fetch('https://coffee-store-server-x9i2.onrender.com/coffee', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
